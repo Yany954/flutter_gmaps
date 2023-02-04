@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gmaps/directions_model.dart';
 import 'package:flutter_gmaps/directions_repository.dart';
+//import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+//import 'package:flutter_gmaps/screens/location_permissions.dart';
 
 void main() {
   runApp(MyApp());
@@ -17,6 +19,7 @@ class MyApp extends StatelessWidget {
         primaryColor: Colors.white,
       ),
       home: MapScreen(),
+
     );
   }
 }
@@ -24,11 +27,13 @@ class MyApp extends StatelessWidget {
 class MapScreen extends StatefulWidget {
   @override
   _MapScreenState createState() => _MapScreenState();
+
 }
 
 class _MapScreenState extends State<MapScreen> {
+  //Position _currentPosition;
   static const _initialCameraPosition = CameraPosition(
-    target: LatLng(37.773972, -122.431297),
+    target: LatLng(9.197375032872001, -73.54608519002646),
     zoom: 11.5,
   );
 
@@ -62,7 +67,7 @@ class _MapScreenState extends State<MapScreen> {
                 ),
               ),
               style: TextButton.styleFrom(
-                primary: Colors.green,
+                foregroundColor: Colors.green,
                 textStyle: const TextStyle(fontWeight: FontWeight.w600),
               ),
               child: const Text('ORIGIN'),
@@ -79,7 +84,7 @@ class _MapScreenState extends State<MapScreen> {
                 ),
               ),
               style: TextButton.styleFrom(
-                primary: Colors.blue,
+                foregroundColor: Colors.blue,
                 textStyle: const TextStyle(fontWeight: FontWeight.w600),
               ),
               child: const Text('DEST'),
@@ -141,7 +146,7 @@ class _MapScreenState extends State<MapScreen> {
             ),
         ],
       ),
-      floatingActionButton: FloatingActionButton(
+      floatingActionButton:FloatingActionButton(
         backgroundColor: Theme.of(context).primaryColor,
         foregroundColor: Colors.black,
         onPressed: () => _googleMapController.animateCamera(
@@ -190,4 +195,7 @@ class _MapScreenState extends State<MapScreen> {
       setState(() => _info = directions);
     }
   }
+
+
 }
+
